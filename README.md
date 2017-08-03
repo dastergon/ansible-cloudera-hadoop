@@ -2,7 +2,7 @@
 
 An ansible playbook to deploy Cloudera hadoop components to the cluster
 
-**Fork Note**: This forks has replaced RedHat support for the sake of support to Ubuntu 16.04 LTS. It uses apt and the ppa of BigTop to install the CDH5.
+**Fork Note**: This fork has replaced RedHat support for the sake of support to Ubuntu 16.04 LTS. It uses apt and the ppa of BigTop to install the CDH5.
 
 # Overview
 The playbook is composed according to [official cloudera guides](http://www.cloudera.com/content/www/en-us/documentation/enterprise/5-4-x/topics/cdh_ig_command_line.html) with a primary purpose of production deployment in mind. High availability for **HDFS** and **Yarn** is implemented when a sufficient number of resources(hosts) is configured. From the other side, all of the components can be also deployed on a single host.
