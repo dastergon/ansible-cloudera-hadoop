@@ -1,6 +1,6 @@
 - name: install oozie packages
   tags: packages
-  yum:  name={{ item }} state=latest
+  apt:  name={{ item }} state=latest
   with_items:
     - oozie
     - unzip

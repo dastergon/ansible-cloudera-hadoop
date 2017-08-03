@@ -38,8 +38,8 @@
   <property>
     <description>Where to aggregate logs to.</description>
     <name>yarn.nodemanager.remote-app-log-dir</name>
-{% if groups['namenodes']|count > 1 %}
-    <value>hdfs://{{ cluster_name }}/var/log/hadoop-yarn/apps</value>
+    {% if groups['namenodes']|count > 1 %}
+    <value>hdfs://{{ cluster_name }}:8020/var/log/hadoop-yarn/apps</value>
     {% else %}
     <value>hdfs://{{ groups['namenodes'][0] }}:8020/var/log/hadoop-yarn/apps</value>
 {% endif %}

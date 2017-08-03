@@ -1,6 +1,6 @@
 - name: install impala server package
   tags: packages
-  yum:  name={{ item }} state=latest
+  apt:  name={{ item }} state=latest
   with_items:
     - impala-server
     - impala-shell

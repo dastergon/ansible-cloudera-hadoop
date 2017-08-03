@@ -1,5 +1,5 @@
 - name: ensure httpd is in place for dashboard
-  yum: name=httpd state=present
+  apt: name=httpd state=present
 
 - name: create dashboard directory
   file: path={{ dashboard_folder }} state=directory

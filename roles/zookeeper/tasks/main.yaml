@@ -1,6 +1,6 @@
 - name: install zookeeper-server
   tags: package
-  yum: name=zookeeper-server state=latest
+  apt: name=zookeeper-server state=latest
 
 - name: create configuration directory
   tags: config
@@ -35,6 +35,10 @@
   tags: init
   shell: rm -rf {{ zookeeper_data_dir }}/*
   when: destroy_data
+
+- name: stop zookeeper
+  tags: service
+  service: name=zookeeper-server state=stopped
 
 - name: init zookeeper directory
   tags: init

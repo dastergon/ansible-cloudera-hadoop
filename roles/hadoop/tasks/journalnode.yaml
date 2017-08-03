@@ -1,6 +1,6 @@
 - name: install packages
   tags: package
-  yum:  name=hadoop-hdfs-journalnode state=latest
+  apt:  name=hadoop-hdfs-journalnode state=latest
 
 - name: destroy data
   tags: init

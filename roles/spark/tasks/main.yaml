@@ -1,12 +1,12 @@
 - name: install packages
   tags: packages
-  yum: name={{ item }} state=latest
+  apt: name={{ item }} state=latest
   with_items:
     - spark-core
 
 - name: install packages
   tags: packages
-  yum: name={{ item }} state=latest
+  apt: name={{ item }} state=latest
   with_items:
     - spark-history-server
   when: ansible_hostname == groups['spark'][0]

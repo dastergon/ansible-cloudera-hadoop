@@ -1,6 +1,6 @@
 - name: install packages
   tags: package
-  yum:  name={{ item }} state=latest
+  apt:  name={{ item }} state=latest
   with_items:
     - hadoop-hdfs-datanode
     - hadoop-yarn-nodemanager

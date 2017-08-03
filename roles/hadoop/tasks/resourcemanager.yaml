@@ -1,12 +1,12 @@
 - name: install resource manager package
   tags: package
-  yum:  name={{ item }} state=latest
+  apt:  name={{ item }} state=latest
   with_items:
     - hadoop-yarn-resourcemanager
 
 - name: install history server package
   tags: package
-  yum:  name={{ item }} state=latest
+  apt:  name={{ item }} state=latest
   with_items:
     - hadoop-mapreduce-historyserver
   when: ansible_hostname == groups['yarnresourcemanager'][0]

@@ -1,7 +1,7 @@
 # java package name
 # for oracle distributed packages you should use java-<version> as name
-java_package: java-1.8.0
-java_home: /usr/java/jdk1.8.0_65/
+java_package: openjdk-8-jdk
+java_home: ""
 
 # cluster name will impact the name of alternatives links and hdfs URI in the case of HA
 cluster_name: cluster

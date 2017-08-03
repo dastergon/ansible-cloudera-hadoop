@@ -1,10 +1,40 @@
+- name: set CDH5 ubuntu repo
+  get_url:
+      url: 'https://archive.cloudera.com/cdh5/ubuntu/xenial/amd64/cdh/cloudera.list'
+      dest: '/etc/apt/sources.list.d/cloudera.list'
+
+- apt_key:
+    url: "https://archive.cloudera.com/cdh5/ubuntu/xenial/amd64/cdh/archive.key"
+    state: present
+
+- name: add priority to the CDH5
+  blockinfile:
+        path: /etc/apt/preferences.d/cloudera.pref
+        create: yes
+        block: |
+            Package: *
+            Pin: release o=Cloudera, l=Cloudera
+            Pin-Priority: 501
+
+- name: set bigtop-utils repo
+  get_url:
+      url: 'https://archive.apache.org/dist/bigtop/bigtop-1.2.0/repos/ubuntu16.04/bigtop.list'
+      dest: '/etc/apt/sources.list.d/bigtop-1.2.0.list'
+
+- apt_key:
+    url: "http://archive.apache.org/dist/bigtop/bigtop-1.2.0/repos/GPG-KEY-bigtop"
+    state: present
+
+- name: Run the equivalent of apt-get update as a separate step
+  apt:
+    update_cache: yes
+
 - name: install packages
   tags: packages
-  yum: name={{item}} state=latest
+  apt: name={{item}} state=latest
   with_items:
     - "{{ java_package }}"
     - bigtop-utils
-    - redhat-lsb-core
 
 - name: install template configurations
   tags: config
