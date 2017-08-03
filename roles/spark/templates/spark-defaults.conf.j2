@@ -12,3 +12,6 @@ spark.eventLog.dir               hdfs://{{ groups['namenodes'][0] }}:8020{{ spar
 # spark.serializer                 org.apache.spark.serializer.KryoSerializer
 # spark.driver.memory              5g
 # spark.executor.extraJavaOptions  -XX:+PrintGCDetails -Dkey=value -Dnumbers="one two three"
+{% if groups['yarnresourcemanager']|count > 0 %}
+spark.yarn.historyServer.address  http://{{groups['yarnresourcemanager'][0]}}:18080
+{% endif %}
